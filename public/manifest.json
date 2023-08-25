@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Bookmark Sync",
+  "version": "0.0.2",
+  "description": "Synchronize your bookmarks between devices.",
+  "action": {
+    "default_title": "Open popup",
+    "default_popup": "popup.html"
+  },
+  "background": {
+      "scripts": [ "extension.js" ],
+      "type": "module"
+  },
+  "permissions": [
+      "alarms",
+      "webRequest",
+      "bookmarks",
+      "storage"
+  ]
+}

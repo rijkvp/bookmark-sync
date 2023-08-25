@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta viewport="width=device-width, initial-scale=1">
+        <title>Bookmarks</title>
+        <script src="src/popup.ts" type="module"></script>
+        <script src="src/sync.ts" type="module"></script>
+        <style>
+            * {
+                font-family: Fira Sans, sans-serif;
+            }
+            a:link, a:visited {
+                color: #000;
+            }
+            a:hover, a:active {
+                color: #000;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="sync-button">Sync</button>
+        <button id="import-button">Import</button>
+
+        <h2>Sync</h2>
+        <label for="config-api-url">API server URL</label>
+        <input type="url" id="config-api-url" placeholder="API server URL" value="http://localhost:3000">
+        <button id="config-save">Save</button>
+
+        <h2>Bookmarks</h2>
+        <ul id="list"></ul>
+    </body>
+</html>
