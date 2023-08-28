@@ -1,34 +1,36 @@
-import { syncBookmarks } from './sync';
-import { importBookmarks } from './bookmarks';
-
-if (chrome) {
-    browser = chrome;
-}
+import browser from 'webextension-polyfill';
+// import { syncBookmarks } from './sync';
+// import { importBookmarks } from './bookmarks';
 
 browser.runtime.onInstalled.addListener(() => {
-    importBookmarks();
+    // importBookmarks();
 });
 
 browser.alarms.create('sync', {
-    periodInMinutes: 0.2
+    periodInMinutes: 1
 });
 
-browser.alarms.onAlarm.addListener((alarm) => {
-    if (alarm.name === 'sync') {
-        syncBookmarks();
-    }
-});
+// Auto-sync is disabled for now
+// browser.alarms.onAlarm.addListener((alarm) => {
+//    if (alarm.name === 'sync') {
+//        syncBookmarks();
+//    }
+// });
 
 browser.bookmarks.onChanged.addListener((id, changeInfo) => {
     console.log('Bookmark changed', id, changeInfo);
-    syncBookmarks();
+    // TODO: somehow prevent this from triggering when applying changes
+    //syncBookmarks();
 });
-browser.bookmarks.onMoved.addListener((id, moveInfo) => {
+browser.bookmarks.onMoved.addListener((id: string, moveInfo) => {
     console.log('Bookmark moved', id, moveInfo);
-    syncBookmarks();
+    // TODO: Re-import bookmarks
+    // TODO: somehow prevent this from triggering when applying changes
+    // syncBookmarks();
 });
 
 browser.bookmarks.onRemoved.addListener((id, removeInfo) => {
     console.log('Bookmark removed', id, removeInfo);
-    syncBookmarks();
+    // TODO: somehow prevent this from triggering when applying changes
+    // syncBookmarks();
 });

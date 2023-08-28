@@ -1,9 +1,10 @@
+import browser from 'webextension-polyfill';
 import { syncBookmarks } from './sync';
 import { importBookmarks, getBookmarks } from './bookmarks';
 
-const list = document.getElementById('list');
-const syncButton = document.getElementById('sync-button');
-const importButton = document.getElementById('import-button');
+const list = document.getElementById('list')!;
+const syncButton = document.getElementById('sync-button')!;
+const importButton = document.getElementById('import-button')!;
 
 async function displayBookmarks() {
     const bookmarks = await getBookmarks();
